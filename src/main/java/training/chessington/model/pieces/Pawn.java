@@ -18,14 +18,27 @@ public class Pawn extends AbstractPiece {
     public List<Move> getAllowedMoves(Coordinates from, Board board) {
         ArrayList<Move> moves = new ArrayList<Move>();
 
+        if(colour == PlayerColour.WHITE && from.getRow() == 6 ) {
+            Coordinates to = from.plus(-2, 0);
+            Move move = new Move(from, to);
+
+            moves.add(move);
+        }
+        else if(colour == PlayerColour.BLACK && from.getRow() == 1) {
+            Coordinates to = from.plus(2, 0);
+            Move move = new Move(from, to);
+
+            moves.add(move);
+        }
+
         if (colour == PlayerColour.WHITE) {
             Coordinates to = from.plus(-1, 0);
             Move move = new Move(from, to);
 
             moves.add(move);
         }
-        else {
-            Coordinates to = from.plus(+1, 0);
+        else if (colour == PlayerColour.BLACK) {
+            Coordinates to = from.plus(1, 0);
             Move move = new Move(from, to);
 
             moves.add(move);
